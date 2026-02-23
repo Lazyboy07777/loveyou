@@ -77,8 +77,8 @@
 </head>
 <body>
 
-<div class="container" id="main">
-    <img src="https://i.imgur.com/8QfQZ5P.png" id="cat">
+<div id="mainContent">
+    <img src="image.png" id="cat">
     <div class="message">可以成为我的恋人吗？</div>
     <div class="buttons">
         <button class="yes" onclick="yes()">可以</button>
@@ -86,15 +86,25 @@
     </div>
 </div>
 
-<div class="container hidden" id="yesPage">
-    <img src="https://i.imgur.com/5cX1F6k.png">
+<div class="yesContent" id="hidden">
+    <img src="image.png">
     <div class="message">那就说好啦 ❤️<br>我会好好珍惜你</div>
 </div>
 
+<div id ="confessionContent" class="hidden">
+    <img src="image.png" alt ="biaobai" class="final-iamge>
+    <div class = final-message">可是你是我的啊</div>
+</div>
+
 <script>
-let noBtn = document.getElementById("noBtn");
-let cat = document.getElementById("cat");
-let count = 0;
+    const mainContent = document.getElementById('mainContent');
+    const yesContent = document.getElementById('yesContent');
+    const confessionContent = document.getElementById("confessionContent");
+  
+
+    let noBtn = document.getElementById("noBtn");
+    let cat = document.getElementById("cat");
+    let count = 0;
 
 noBtn.onclick = function () {
     count++;
