@@ -17,47 +17,49 @@
             height:100vh;
         }
 
-        .card {
-            background: rgba(255,255,255,0.9);
-            border-radius: 20px;
-            padding: 30px 25px;
-            width: 85%;
-            max-width: 350px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            animation: fadeIn 2s;
+        .cat-image {
+            width150px;
+            height: auto;
+            margin-bottom:20px;
+
         }
 
-        h1 {
-            color: #ff4b5c;
-            margin-bottom: 15px;
-        }
-
-        p {
+        .message {
+            font-size: 24px;
             color: #333;
-            font-size: 16px;
-            line-height: 1.7;
+            margin-bottom: 20px;
         }
 
-        .btn {
-            margin-top: 20px;
+        .buttons {
+            font-size: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .button {
             padding: 12px 25px;
-            border: none;
-            border-radius: 30px;
-            background: #ff4b5c;
-            color: white;
             font-size: 16px;
+            border: none;
+            border-radius: 20px;
             cursor: pointer;
+            transition: all .3s;
         }
 
-        .btn:active {
-            transform: scale(0.95);
+        .yes {
+            background: #ff6b81;
+            color: white;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .no {
+            background: #70a1ff;
+            color: white;
+            position: relative;
         }
+
+        .hidden {
+            display: none;
+        }
+
 
         /* 爱心动画 */
         .heart {
@@ -75,35 +77,47 @@
 </head>
 <body>
 
-<div class="card">
-    <h1>❤️ 我想对你说 ❤️</h1>
-    <p>
-        从认识你的那一刻起，<br>
-        我的世界好像多了一点光。<br><br>
-        你愿意给我一个机会，<br>
-        让我陪你走过未来的日子吗？
-    </p>
-    <button class="btn" onclick="showLove()">点我一下 💕</button>
+<div class="container" id="main">
+    <img src="https://i.imgur.com/8QfQZ5P.png" id="cat">
+    <div class="message">可以成为我的恋人吗？</div>
+    <div class="buttons">
+        <button class="yes" onclick="yes()">可以</button>
+        <button class="no" id="noBtn">不要</button>
+    </div>
+</div>
+
+<div class="container hidden" id="yesPage">
+    <img src="https://i.imgur.com/5cX1F6k.png">
+    <div class="message">那就说好啦 ❤️<br>我会好好珍惜你</div>
 </div>
 
 <script>
-    function showLove() {
-        alert("我喜欢你 ❤️");
+let noBtn = document.getElementById("noBtn");
+let cat = document.getElementById("cat");
+let count = 0;
 
-        for (let i = 0; i < 20; i++) {
-            let heart = document.createElement("div");
-            heart.className = "heart";
-            heart.innerHTML = "❤️";
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.bottom = "0px";
-            heart.style.fontSize = (16 + Math.random() * 20) + "px";
-            document.body.appendChild(heart);
+noBtn.onclick = function () {
+    count++;
 
-            setTimeout(() => {
-                heart.remove();
-            }, 4000);
-        }
+    // 不要按钮乱跑
+    noBtn.style.position = "absolute";
+    noBtn.style.left = Math.random() * 200 + "px";
+    noBtn.style.top = Math.random() * 200 + "px";
+
+    // 点几次后换图
+    if (count === 2) {
+        cat.src = "https://i.imgur.com/6RLU0zB.png";
     }
+
+    if (count >= 5) {
+        alert("别点啦 😳 我是真的喜欢你");
+    }
+}
+
+function yes() {
+    document.getElementById("main").classList.add("hidden");
+    document.getElementById("yesPage").classList.remove("hidden");
+}
 </script>
 
 </body>
