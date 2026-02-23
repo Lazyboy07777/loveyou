@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>给你的一封小心意 ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Microsoft YaHei", sans-serif;
+            overflow: hidden;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            padding: 30px 25px;
+            width: 85%;
+            max-width: 350px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: fadeIn 2s;
+        }
+
+        h1 {
+            color: #ff4b5c;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #333;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            background: #ff4b5c;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 爱心动画 */
+        .heart {
+            position: fixed;
+            color: #ff4b5c;
+            font-size: 20px;
+            animation: floatUp 4s linear forwards;
+        }
+
+        @keyframes floatUp {
+            0% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-100vh); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>❤️ 我想对你说 ❤️</h1>
+    <p>
+        从认识你的那一刻起，<br>
+        我的世界好像多了一点光。<br><br>
+        你愿意给我一个机会，<br>
+        让我陪你走过未来的日子吗？
+    </p>
+    <button class="btn" onclick="showLove()">点我一下 💕</button>
+</div>
+
+<script>
+    function showLove() {
+        alert("我喜欢你 ❤️");
+
+        for (let i = 0; i < 20; i++) {
+            let heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.bottom = "0px";
+            heart.style.fontSize = (16 + Math.random() * 20) + "px";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+    }
+</script>
+
+</body>
+</html>
